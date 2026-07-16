@@ -16,7 +16,6 @@ spec:
       tier: db
   template:
     metadata:
-      name: mongodb
       labels:
         project: roboshop
         component: mongodb

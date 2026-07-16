@@ -1,3 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogue
+  namespace: roboshop
+data:
+  MONGO: "true"
+  MONGO_URL: "mongodb://mongodb:27017/catalogue"
+---  
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,7 +25,6 @@ spec:
       tier: backend
   template:
     metadata:
-      name: catalogue
       labels:
         project: roboshop
         component: catalogue
@@ -25,6 +33,9 @@ spec:
       cotainers:
         - name: catalogue
           image: santu268devops/catalogue:4.0.0
+          envFrom:
+            - configMapRef:
+                name: catalogue
 ---
 apiVersion: v1
 kind: Service
