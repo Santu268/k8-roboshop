@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: roboshop
+  name: catalogue
+  labels:
+    project: roboshop
+    component: catalogue
+    tier: backend 
+spec:
+  replicas: 1
+  selector:
+    matchlabels:
+      project: roboshop
+      component: catalogue
+      tier: backend
+  template:
+    metadata:
+      name: catalogue
+      labels:
+        project: roboshop
+        component: catalogue
+        tier: backend
+    spec:
+      cotainers:
+        - name: catalogue
+          image: santu268devops/catalogue:4.0.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue
+  namespace: roboshop
+  # servicer labels
+  labels:
+    project: roboshop
+    tier: backend
+    component: catalogue
+spec:
+  # Service uses the below labels to select the pods
+  selector:
+    project: roboshop
+    tier: backend
+    component: catalogue
+  ports:
+    - protocol: TCP
+      port: 8080 # service port
+      targetPort: 8080 # container port
