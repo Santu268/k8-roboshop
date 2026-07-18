@@ -24,7 +24,7 @@ metadata:
 spec:
   replicas:   
   selector:
-    matchlabels:
+    matchLabels:
       project: roboshop
       tier: db
       component: mysql
