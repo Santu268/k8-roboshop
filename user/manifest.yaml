@@ -37,6 +37,9 @@ spec:
           image: santu268devops/user:4.0.0
           ports:
             - containerPort: 8080
+          envFrom:
+            - configMapRef
+                name: user
 ---
 apiVersion: v1
 kind: Service
