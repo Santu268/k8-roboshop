@@ -35,7 +35,7 @@ spec:
         - name: rabbitmq
           image: santu268devops/rabbitmq:4.0.0
           envFrom:
-            - secretRef
+            - secretRef:
                 name: rabbitmq
 ---
 apiVersion: v1
