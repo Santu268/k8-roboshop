@@ -38,8 +38,9 @@ spec:
           ports:
             - containerPort: 8080
           envFrom:
-            - configMapRef
+            - configMapRef:
                 name: user
+
 ---
 apiVersion: v1
 kind: Service
