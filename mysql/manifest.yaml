@@ -12,7 +12,7 @@ data:
   MYSQL_ROOT_PASSWORD: Um9ib1Nob3BAMQo=
 
 ---
-appVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
