@@ -48,7 +48,7 @@ metadata:
     component: rabbitmq
     tier: db
 spec:
-  type: ClusterIp
+  type: ClusterIP
   selector:
     project: roboshop
     component: rabbitmq
