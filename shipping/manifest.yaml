@@ -56,7 +56,7 @@ spec:
               path: /health
               port: liveness-port
             periodSeconds: 10
-            envFrom:
+          envFrom:
               - configMapRef:
                   name: shipping
 ---
