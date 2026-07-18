@@ -57,7 +57,7 @@ spec:
               port: liveness-port
             periodSeconds: 10
           envFrom:
-              - configMapRef:
+            - configMapRef:
                   name: shipping
 ---
 apiVersion: v1
