@@ -34,7 +34,7 @@ spec:
       tier: db
       component: mysql
     spec:
-      container:
+      containers:
         - name: mysql
           image: santu268devops/mysql:4.0.0
           envFrom:
