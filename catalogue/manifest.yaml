@@ -30,7 +30,7 @@ spec:
         component: catalogue
         tier: backend
     spec:
-      cotainers:
+      containers:
         - name: catalogue
           image: santu268devops/catalogue:4.0.0
           envFrom:
