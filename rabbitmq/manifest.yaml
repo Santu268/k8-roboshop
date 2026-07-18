@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rabbitmq
+  namespace: roboshop
+type: Opaque  
+data:
+  RABBITMQ_DEFAULT_USER: cm9ib3Nob3AK
+  RABBITMQ_DEFAULT_PASS: cm9ib3Nob3AxMjMK 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: roboshop
+  name: rabbitmq
+  labels:
+    project: roboshop
+    component: rabbitmq
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchlabels:
+      project: roboshop
+      component: rabbitmq
+      tier: db
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: rabbitmq
+        tier: db
+    spec:
+      cotainers:
+        - name: rabbitmq
+          image: santu268devops/rabbitmq:4.0.0
+          envFrom:
+            - secretRef
+                name: rabbitmq
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: roboshop
+  name: rabbitmq
+  labels:
+    project: roboshop
+    component: rabbitmq
+    tier: db
+spec:
+  type: ClusterIp
+  selector:
+    project: roboshop
+    component: rabbitmq
+    tier: db
+  ports:
+    - protocol: TCP
+      port: 5672  # service port
+      targetPort: 5672  # container port
+
